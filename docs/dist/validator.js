@@ -6,7 +6,15 @@
  * https://github.com/1000hz/bootstrap-validator
  */
 
-+function ($) {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+}(function ($) {
   'use strict';
 
   var inputSelector = ':input:not([type="submit"], button):enabled:visible'
@@ -57,7 +65,7 @@
   }
 
   Validator.VALIDATORS = {
-    native: function ($el) {
+    'native': function ($el) {
       var el = $el[0]
       return el.checkValidity ? el.checkValidity() : true
     },
@@ -299,5 +307,4 @@
       Plugin.call($form, $form.data())
     })
   })
-
-}(jQuery);
+}));
