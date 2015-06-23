@@ -24,9 +24,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * ======================================================================== */
-
-
-+function ($) {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+}(function ($) {
   'use strict';
 
   var inputSelector = ':input:not([type="submit"], button):enabled:visible'
@@ -319,5 +325,4 @@
       Plugin.call($form, $form.data())
     })
   })
-
-}(jQuery);
+}));
