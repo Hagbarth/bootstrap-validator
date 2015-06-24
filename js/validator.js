@@ -34,8 +34,8 @@
      } else {
          // Browser globals
          factory(jQuery);
-     }    
-})(function ($) {
+     }
+}(function ($) {
   'use strict';
 
   var inputSelector = ':input:not([type="submit"], button):enabled:visible'
