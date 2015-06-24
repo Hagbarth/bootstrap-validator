@@ -26,13 +26,16 @@
  * ======================================================================== */
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(jQuery);
-    }
-}(function ($) {
+        // AMD. Register as an anonymous module.
+         define(['jquery'], factory);
+     } else if (typeof exports === 'object') {
+         // Node/CommonJS
+         module.exports = factory(require('jquery'));
+     } else {
+         // Browser globals
+         factory(jQuery);
+     }    
+})(function ($) {
   'use strict';
 
   var inputSelector = ':input:not([type="submit"], button):enabled:visible'
